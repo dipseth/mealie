@@ -275,7 +275,7 @@ async def serve_shared_recipe_with_meta(group_slug: str, token_id: str, session:
 
 
 def mount_spa(app: FastAPI):
-    if not os.path.exists(__app_settings.STATIC_FILES):
+    if __app_settings.DISABLE_FRONTEND or not os.path.exists(__app_settings.STATIC_FILES):
         return
 
     global __contents

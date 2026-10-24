@@ -14,6 +14,7 @@
 | TOKEN_TIME                    |          48           | The time in hours a login session lasts. Must be <= 9600 (400 days, in hours).                                                                          |
 | API_PORT                      |         9000          | The port exposed by backend API. **Do not change this if you're running in Docker**                                                                     |
 | API_DOCS                      |         True          | Turns on/off access to the API documentation locally                                                                                                    |
+| DISABLE_FRONTEND<super>\*\*</super> |    false    | Don't serve the bundled web UI (headless / API-only mode). The API, API docs, and media routes keep working                                              |
 | TZ                            |          UTC          | Must be set to get correct date/time on the server                                                                                                      |
 | ALLOW_SIGNUP<super>\*</super> |         false         | Allow user sign-up without token                                                                                                                        |
 | ALLOW_PASSWORD_LOGIN          |         true          | Whether or not to display the username+password input fields. Keep set to true unless you use OIDC authentication                                       |
@@ -22,6 +23,8 @@
 | DAILY_SCHEDULE_TIME           |         23:45         | The time of day to run daily server tasks, in HH:MM format. Use the server's local time, *not* UTC                                                      |
 
 <super>\*</super> Starting in v1.4.0 this was changed to default to `false` as part of a security review of the application.
+
+<super>\*\*</super> Use this when Mealie is the backend for another client (a custom frontend, Home Assistant, scripts). With the UI off, admin tasks such as managing users, households, and backups go through the API. Links in emails and notifications (password resets, invitations, shared recipes) are still built from `BASE_URL`, so point `BASE_URL` at whatever frontend handles those pages.
 
 ### Security
 

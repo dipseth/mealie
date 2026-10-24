@@ -16,6 +16,7 @@ def test_non_default_settings(monkeypatch):
     monkeypatch.setenv("DEFAULT_HOUSEHOLD", "Test Household")
     monkeypatch.setenv("API_PORT", "8000")
     monkeypatch.setenv("API_DOCS", "False")
+    monkeypatch.setenv("DISABLE_FRONTEND", "True")
 
     get_app_settings.cache_clear()
     app_settings = get_app_settings()
@@ -24,6 +25,7 @@ def test_non_default_settings(monkeypatch):
     assert app_settings.DEFAULT_HOUSEHOLD == "Test Household"
     assert app_settings.API_PORT == 8000
     assert app_settings.API_DOCS is False
+    assert app_settings.DISABLE_FRONTEND is True
 
     assert app_settings.DOCS_URL is None
 

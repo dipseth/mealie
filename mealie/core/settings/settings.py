@@ -159,6 +159,9 @@ class AppSettings(AppLoggingSettings):
     API_HOST: str = "0.0.0.0"
     API_PORT: int = 9000
     API_DOCS: bool = True
+    DISABLE_FRONTEND: bool = False
+    """when True, the bundled web UI is not served; the API, API docs, and media routes still work"""
+
     TOKEN_TIME: int = 48
     """time in hours"""
 
